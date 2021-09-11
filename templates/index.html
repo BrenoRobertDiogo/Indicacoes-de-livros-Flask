@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        type="text/css">
+    <link rel="stylesheet" href="https://static.pingendo.com/bootstrap/bootstrap-4.3.1.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+
+</head>
+
+
+
+
+
+<body>
+    <div class="container">
+        <!-- Button trigger modal -->
+
+        <div class="row">
+            <div class="col text-center">
+
+                <h1>Indicações de livros</h1>
+                <p>
+                    Opa galera, hoje vou falar alguns livros que eu recomendo!
+                </p>
+            </div>
+            <div class="col justify-content-end d-flex">
+                <img id="imagem"
+                    src="https://media-exp1.licdn.com/dms/image/C4D03AQG4wbB1TpLE4Q/profile-displayphoto-shrink_200_200/0/1618253051370?e=1636588800&v=beta&t=ggx9zmkrzsnE5srnIW4wz4R_iFU-AlhEteQvFFjdbDc"
+                    alt="">
+            </div>
+
+        </div>
+
+        <div class="row justify-content-center">
+            {% for top in lista %}
+
+            <!-- Modal -->
+            <div class="modal fade" id="val{{loop.index}}" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Mais dados sobre o livro</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                               <div><b>Autor: </b> {{top.autores.autor1}}</div> 
+                               <div><b>Categoria:</b>  {{top.categoria}}</div>  
+                               <div><b>Estoque:</b> {{top.estoque}}</div>  
+                               <div><b>Nº Paginas:</b> {{top.paginas}}</div>  
+                               <div><b>Preço: </b> R$ {{top.preco}}</div> 
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col m-5 efeitoManeiro">
+
+
+                <div class="card" style="width: 400px;">
+                    <div class="row">
+                        <div class="col-3">
+                            <img class="card-img-top" src="{{top.imgCapa}}" alt="Card image cap">
+
+                        </div>
+                        <div class="col-9">
+
+                            <h4>{{top.titulo}}</h4>
+
+
+
+
+                        </div>
+
+                    </div>
+                    <div class="card-body d-flex">
+                        <p class="card-text">{{top.descricao}}</p>
+                    </div>
+                    <button type="button" class="btn btn-outline-primary" data-toggle="modal"
+                        data-target="#val{{loop.index}}">
+                        Saber mais
+                    </button>
+                </div>
+            </div>
+
+
+
+
+            {% endfor %}
+        </div>
+    </div> <!-- END CONTAINER -->
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+        integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
